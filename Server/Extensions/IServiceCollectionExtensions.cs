@@ -5,7 +5,7 @@ using FlightManagement.Server.Services.Contracts;
 
 namespace FlightManagement.Server.Extensions
 {
-    public static class IServiceCollectionsExtensions
+    public static class IServiceCollectionExtensions
     {
         private static void ConfigureRepositoryManager(this IServiceCollection services)
         {

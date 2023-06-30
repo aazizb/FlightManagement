@@ -1,0 +1,54 @@
+﻿@page "/flights"
+@inject IFlightService FlightService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Flights</PageTitle>
+
+<h3>Flight</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Flight ID</th>
+            <th>Flight Name</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>Distance</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flight in FlightService.Flights)
+        {
+            <tr>
+                <td>@flight.Id</td>
+                <td>@flight.Name</td>
+                <td>@flight.Departure</td>
+                <td>@flight.Departure.Name</td>
+                <td>@flight.Destination</td>
+                <td>@flight.Distance</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="(() => ShowFlight(flight.Id))"><i class="oi oi-pencil"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button class="btn btn-primary" @onclick="CreateNewFlight">Create New Flight</button>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await FlightService.GetFlights();
+    }
+
+    void ShowFlight(int id)
+    {
+        NavigationManager.NavigateTo($"flight/{id}");
+    }
+
+    void CreateNewFlight()
+    {
+        NavigationManager.NavigateTo("/flight");
+    }
+}

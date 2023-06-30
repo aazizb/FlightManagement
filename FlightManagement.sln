@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManagement.Server", "Server\FlightManagement.Server.csproj", "{4E6CDC49-F10D-4295-AD11-16E9FA2D2C8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement.Server", "Server\FlightManagement.Server.csproj", "{4E6CDC49-F10D-4295-AD11-16E9FA2D2C8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManagement.Client", "Client\FlightManagement.Client.csproj", "{EB06F80E-0A3F-416B-AB64-91450F5A08F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement.Client", "Client\FlightManagement.Client.csproj", "{EB06F80E-0A3F-416B-AB64-91450F5A08F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManagement.Shared", "Shared\FlightManagement.Shared.csproj", "{53A858E9-19EC-4584-A628-098649A812DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement.Shared", "Shared\FlightManagement.Shared.csproj", "{53A858E9-19EC-4584-A628-098649A812DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
