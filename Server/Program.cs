@@ -1,5 +1,6 @@
 using FlightManagement.Server.Data;
 using FlightManagement.Server.Extensions;
+using FlightManagement.Server.LoggerService;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,11 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 {
     // Configure the HTTP request pipeline.
+
+    var logger = app.Services.GetRequiredService<ILoggerManager>();
+    app.ConfigureExceptionHandler(logger);
+
+
     if (app.Environment.IsDevelopment())
     {
         app.UseWebAssemblyDebugging();

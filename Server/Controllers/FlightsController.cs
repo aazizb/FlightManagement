@@ -21,7 +21,10 @@ namespace FlightManagement.Server.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            logger.LogError("NO ERROR Found");
+            int xx = 0;
+            int zz = 10;
+            var y = zz / xx;
+
             var flights = service.FlightService.GetFlightAirports(false);
             return Ok(flights);
 
