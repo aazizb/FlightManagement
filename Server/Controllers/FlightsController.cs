@@ -20,7 +20,7 @@ namespace FlightManagement.Server.Controllers
         {
             try
             {
-                var flights = service.FlightService.GetAll(false);
+                var flights = service.FlightService.GetFlightAirports(false);
                 return Ok(flights);
             }
             catch (Exception ex)
@@ -64,6 +64,21 @@ namespace FlightManagement.Server.Controllers
             }
             service.FlightService.UpdateFlight(id, flight);
             return NoContent();
+        }
+        [HttpGet("airports")]
+        public IActionResult GetAirports()
+        {
+            try
+            {
+                var airports = service.AirportService.GetAll(false);
+                return Ok(airports);
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.Message);
+            }
         }
 
     }

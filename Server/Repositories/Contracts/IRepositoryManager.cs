@@ -4,5 +4,6 @@
     {
         IFlightRepository Flight { get; }
         void Save();
+        IAirportRepository Airport { get; }
     }
 }

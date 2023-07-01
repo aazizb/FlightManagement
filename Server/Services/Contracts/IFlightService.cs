@@ -9,5 +9,6 @@ namespace FlightManagement.Server.Services.Contracts
         Flight CreateFlight(Flight flight);
         void DeleteFlight(int id, bool trackchanges);
         void UpdateFlight(int id, Flight flight);
+        IEnumerable<Flight> GetFlightAirports(bool trackchanges);
     }
 }

@@ -143,13 +143,7 @@ namespace FlightManagement.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DepartureAirportId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DepartureId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DestinationAirportId")
                         .HasColumnType("int");
 
                     b.Property<int>("DestinationId")

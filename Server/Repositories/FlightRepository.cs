@@ -2,12 +2,17 @@
 using FlightManagement.Server.Repositories.Contracts;
 using FlightManagement.Shared;
 
+using Microsoft.EntityFrameworkCore;
+
 namespace FlightManagement.Server.Repositories
 {
     public class FlightRepository : RepositoryBase<Flight>, IFlightRepository
     {
+        private readonly AppDbContext context;
+
         public FlightRepository(AppDbContext context) : base(context)
         {
+            this.context = context;
         }
 
         public void CreateFlight(Flight flight)
@@ -18,6 +23,13 @@ namespace FlightManagement.Server.Repositories
         public void DeleteFlight(Flight flight)
         {
             Delete(flight);
+        }
+
+        public IEnumerable<Flight> GetFlightAirports(bool trackchanges)
+        {
+            return !trackchanges ?
+                context.Flights.Include(o => o.Departure).Include(o => o.Destination).AsNoTracking() :
+                context.Flights.Include(o => o.Departure).Include(o => o.Destination);
         }
 
         public Flight GetFlightById(int id, bool trackchanges)

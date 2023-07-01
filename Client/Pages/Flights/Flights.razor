@@ -23,9 +23,8 @@
             <tr>
                 <td>@flight.Id</td>
                 <td>@flight.Name</td>
-                <td>@flight.Departure</td>
                 <td>@flight.Departure.Name</td>
-                <td>@flight.Destination</td>
+                <td>@flight.Destination.Name</td>
                 <td>@flight.Distance</td>
                 <td>
                     <button class="btn btn-primary" @onclick="(() => ShowFlight(flight.Id))"><i class="oi oi-pencil"></i></button>

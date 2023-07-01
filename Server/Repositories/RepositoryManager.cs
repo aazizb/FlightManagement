@@ -7,13 +7,18 @@ namespace FlightManagement.Server.Repositories
     {
         private readonly AppDbContext context;
         private readonly Lazy<IFlightRepository> flightRepository;
+        private readonly Lazy<IAirportRepository> airportRepository;
         public RepositoryManager(AppDbContext context)
         {
             this.context = context;
             flightRepository = new Lazy<IFlightRepository>(() => new
                 FlightRepository(context));
+            airportRepository = new Lazy<IAirportRepository>(() => new
+                AirportRepository(context));
         }
         public IFlightRepository Flight => flightRepository.Value;
+
+        public IAirportRepository Airport => airportRepository.Value;
 
         public void Save()
         {

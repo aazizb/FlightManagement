@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlightManagement.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230630091333_mssql_migration_update_fligts_table")]
-    partial class mssql_migration_update_fligts_table
+    [Migration("20230630154134_mssql_migration_initialdb")]
+    partial class mssql_migration_initialdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,13 +146,7 @@ namespace FlightManagement.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DepartureAirportId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DepartureId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DestinationAirportId")
                         .HasColumnType("int");
 
                     b.Property<int>("DestinationId")

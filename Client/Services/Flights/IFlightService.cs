@@ -9,7 +9,7 @@ namespace FlightManagement.Client.Services.Flights
         Task CreateFlight(Flight flight);
         Task DeleteFlight(int id);
         Task UpdateFlight(int id, Flight flight);
-        Task GetAirport();
+        Task GetAirports();
         List<Flight> Flights { get; set; }
         List<Airport> Airports { get; set; }
     }

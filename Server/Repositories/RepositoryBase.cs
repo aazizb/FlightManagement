@@ -15,7 +15,11 @@ namespace FlightManagement.Server.Repositories
         {
             this.context = context;
         }
-        public void Create(T entity) => context.Set<T>().Add(entity);
+        public void Create(T entity)
+        {
+            context.Entry(entity).State = EntityState.Deleted;
+            context.Set<T>().Add(entity);
+        }
 
         public void Delete(T entity) => context.Set<T>().Remove(entity);
 

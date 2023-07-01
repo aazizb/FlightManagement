@@ -38,20 +38,25 @@ namespace FlightManagement.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Departure = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Distance = table.Column<int>(type: "int", nullable: false),
-                    AirportId = table.Column<int>(type: "int", nullable: false)
+                    DepartureId = table.Column<int>(type: "int", nullable: false),
+                    DestinationId = table.Column<int>(type: "int", nullable: false),
+                    Distance = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Flights", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Flights_Airports_AirportId",
-                        column: x => x.AirportId,
+                        name: "FK_Flights_Airports_DepartureId",
+                        column: x => x.DepartureId,
                         principalTable: "Airports",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    //table.ForeignKey(
+                    //    name: "FK_Flights_Airports_DestinationId",
+                    //    column: x => x.DestinationId,
+                    //    principalTable: "Airports",
+                    //    principalColumn: "Id",
+                    //    onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -69,9 +74,14 @@ namespace FlightManagement.Server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Flights_AirportId",
+                name: "IX_Flights_DepartureId",
                 table: "Flights",
-                column: "AirportId");
+                column: "DepartureId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flights_DestinationId",
+                table: "Flights",
+                column: "DestinationId");
         }
 
         /// <inheritdoc />

@@ -21,17 +21,12 @@ namespace FlightManagement.Client.Services.Flights
 
         public async Task CreateFlight(Flight flight)
         {
-            var result = await http.PostAsJsonAsync("api/flights", flight);
+            await http.PostAsJsonAsync("api/flights", flight);
 
-            await SetFlight(result);
+            await SetFlight();
         }
-        private async Task SetFlight(HttpResponseMessage message)
+        private async Task SetFlight()
         {
-            var result = await message.Content.ReadFromJsonAsync<List<Flight>>();
-            if (result is not null)
-            {
-                Flights = result;
-            }
             navigation.NavigateTo("flights");
         }
 
@@ -40,17 +35,18 @@ namespace FlightManagement.Client.Services.Flights
             var result = await http.DeleteAsync($"api/flights/{id}");
             if (result.IsSuccessStatusCode)
             {
-                await SetFlight(result);
+                await SetFlight();
             }
         }
 
-        public async Task GetAirport()
+        public async Task GetAirports()
         {
             /*
              * this should be coming from elsewhere as we are not persisting
                airports, for example from external Rest Api
             */
             var result = await http.GetFromJsonAsync<List<Airport>>("api/flights/airports");
+
             if (result is not null)
             {
                 Airports = result;
@@ -81,7 +77,7 @@ namespace FlightManagement.Client.Services.Flights
             var result = await http.PutAsJsonAsync($"api/flights/{id}", flight);
             if (result.IsSuccessStatusCode)
             {
-                await SetFlight(result);
+                await SetFlight();
             }
         }
     }

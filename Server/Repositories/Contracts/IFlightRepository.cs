@@ -9,5 +9,6 @@ namespace FlightManagement.Server.Repositories.Contracts
         void CreateFlight(Flight flight);
         void DeleteFlight(Flight flight);
         void UpdateFlight(Flight flight);
+        IEnumerable<Flight> GetFlightAirports(bool trackchanges);
     }
 }

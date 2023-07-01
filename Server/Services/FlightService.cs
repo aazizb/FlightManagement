@@ -32,6 +32,11 @@ namespace FlightManagement.Server.Services
             return repository.Flight.GetFlights(trackchanges);
         }
 
+        public IEnumerable<Flight> GetFlightAirports(bool trackchanges)
+        {
+            return repository.Flight.GetFlightAirports(trackchanges);
+        }
+
         public Flight GetFlightBy(int id, bool trackchanges)
         {
             return repository.Flight.GetFlightById(id, trackchanges);
