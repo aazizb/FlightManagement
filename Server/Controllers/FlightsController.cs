@@ -1,4 +1,5 @@
-﻿using FlightManagement.Server.Services.Contracts;
+﻿using FlightManagement.Server.LoggerService;
+using FlightManagement.Server.Services.Contracts;
 using FlightManagement.Shared;
 
 using Microsoft.AspNetCore.Mvc;
@@ -10,24 +11,20 @@ namespace FlightManagement.Server.Controllers
     public class FlightsController : ControllerBase
     {
         private readonly IServiceManager service;
+        private readonly ILoggerManager logger;
 
-        public FlightsController(IServiceManager service)
+        public FlightsController(IServiceManager service, ILoggerManager logger)
         {
             this.service = service;
+            this.logger = logger;
         }
         [HttpGet]
         public IActionResult Get()
         {
-            try
-            {
-                var flights = service.FlightService.GetFlightAirports(false);
-                return Ok(flights);
-            }
-            catch (Exception ex)
-            {
+            logger.LogError("NO ERROR Found");
+            var flights = service.FlightService.GetFlightAirports(false);
+            return Ok(flights);
 
-                return StatusCode(500, ex.Message);
-            }
         }
         [HttpGet("{id:int}", Name = "GetBy")]
         public IActionResult GetBy(int id)

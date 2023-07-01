@@ -9,7 +9,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Flight ID</th>
             <th>Flight Name</th>
             <th>Departure</th>
             <th>Destination</th>
@@ -21,7 +20,6 @@
         @foreach (var flight in FlightService.Flights)
         {
             <tr>
-                <td>@flight.Id</td>
                 <td>@flight.Name</td>
                 <td>@flight.Departure.Name</td>
                 <td>@flight.Destination.Name</td>
