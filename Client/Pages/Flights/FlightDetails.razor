@@ -76,6 +76,10 @@ else
 
     async Task HandleSubmit()
     {
+        Airport? departure = FlightService.Airports.SingleOrDefault(o => o.Id.Equals(flight.DepartureId));
+        Airport? destination = FlightService.Airports.SingleOrDefault(o => o.Id.Equals(flight.DestinationId));
+        flight.Departure = departure;
+        flight.Destination = destination;
         if (Id is null)
         {
             await FlightService.CreateFlight(flight);
