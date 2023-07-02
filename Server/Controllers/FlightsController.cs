@@ -1,5 +1,4 @@
-﻿using FlightManagement.Server.LoggerService;
-using FlightManagement.Server.Services.Contracts;
+﻿using FlightManagement.Server.Services.Contracts;
 using FlightManagement.Shared;
 
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +10,9 @@ namespace FlightManagement.Server.Controllers
     public class FlightsController : ControllerBase
     {
         private readonly IServiceManager service;
-        private readonly ILoggerManager logger;
-
-        public FlightsController(IServiceManager service, ILoggerManager logger)
+        public FlightsController(IServiceManager service)
         {
             this.service = service;
-            this.logger = logger;
         }
         [HttpGet]
         public IActionResult Get()
